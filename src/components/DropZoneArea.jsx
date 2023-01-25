@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import { Box } from "@mui/system";
+import { borderColor, Box } from "@mui/system";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import {Typography, Button } from "@mui/material";
@@ -90,17 +90,25 @@ export default function DropZoneArea() {
 
             </Box>
             <Box
-              backgroundColor="blue"
-              border="2px solid red"
+              backgroundColor="#FAD3E7"
+              border="2px solid #EFA3C8"
               p="5px"
               m="5px"
               width="80px"
               textAlign="center"
-              color="white"
               borderRadius="5px"
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#EFA3C8",
+                  borderColor: "#FAD3E7"
+                }
+              }}
             >
               <Button
                 onClick={clearData}
+                sx={{
+                  color: "#0081B4"
+                }}
               >Clear</Button>
           </Box>
         </>}
