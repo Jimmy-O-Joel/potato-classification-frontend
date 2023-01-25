@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import { borderColor, Box } from "@mui/system";
+import { Box } from "@mui/system";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import {Typography, Button } from "@mui/material";
@@ -34,6 +34,7 @@ export default function DropZoneArea() {
     }
     setIsloading(true);
     sendFile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [image]);
 
 
@@ -56,7 +57,7 @@ export default function DropZoneArea() {
     confidence = (parseFloat(data.confidence) * 100).toFixed(2);
   }
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
     <Box>
@@ -69,7 +70,7 @@ export default function DropZoneArea() {
         }
 
       {paths.map(path => 
-        <img key={path} src={path} />
+        <img key={path} src={path} alt="img"/>
       )}
 
         {isLoading && <Box>
