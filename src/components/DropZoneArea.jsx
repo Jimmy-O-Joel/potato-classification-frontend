@@ -18,7 +18,7 @@ export default function DropZoneArea() {
     if (image) {
         let formData = new FormData()
         formData.append("file", selectedFile)
-        let res = await axios.post("http://localhost:8000/predict", formData)
+        let res = await axios.post("https://potato-classification-97z7.onrender.com/predict", formData)
 
         if (res.status === 200) {
             setData(res.data)
