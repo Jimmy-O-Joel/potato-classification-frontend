@@ -12,7 +12,6 @@ export default function DropZoneArea() {
   const [data, setData] = useState()
   const [isLoading, setIsloading] = useState(false);
   let confidence = 0;
-  const isNonMobileScreen = useMediaQuery("(min-width: 1000px)")
 
   const sendFile = async ()=>{
     if (image) {
@@ -61,7 +60,7 @@ export default function DropZoneArea() {
 
   return (
     <Box
-      m={isNonMobileScreen?"100px":"200px"}
+      m="150px 0 0"
     >
         {
             !image && <div {...getRootProps()}>
