@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Box } from "@mui/system";
 import axios from "axios";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, useMediaQuery } from "@mui/material";
 import {Typography, Button } from "@mui/material";
 
 export default function DropZoneArea() {
@@ -12,6 +12,7 @@ export default function DropZoneArea() {
   const [data, setData] = useState()
   const [isLoading, setIsloading] = useState(false);
   let confidence = 0;
+  const isNonMobileScreen = useMediaQuery("(min-width: 1000px)")
 
   const sendFile = async ()=>{
     if (image) {
@@ -60,14 +61,14 @@ export default function DropZoneArea() {
 
   return (
     <Box
-      m="100px 0 0"
+      m={isNonMobileScreen?"100px":"200px"}
     >
         {
             !image && <div {...getRootProps()}>
 
                 <Box
                   border="2px dashed #03001C"
-                  width="360px"
+                  width="18rem"
                   height="100px"
                   m="0 auto"
                   display="flex"
@@ -92,7 +93,7 @@ export default function DropZoneArea() {
       {paths.map(path => 
         <Box
           borderRadius="10px"
-          width="256px"
+          width="16rem"
           m="0 auto"
         >
 
@@ -103,7 +104,7 @@ export default function DropZoneArea() {
         {isLoading && <Box
         
             backgroundColor="#FAD3E7"
-            width="256px"
+            width="16rem"
             className="label"
             textAlign="center"
             m="0 auto"

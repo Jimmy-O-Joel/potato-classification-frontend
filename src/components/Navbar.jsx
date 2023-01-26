@@ -2,9 +2,12 @@ import React from 'react'
 import { Box } from '@mui/system'
 import { AppBar, Typography } from '@mui/material'
 import SettingsIcon from '@mui/icons-material/Settings';
+import {useMediaQuery} from '@mui/material';
 
 
 function Navbar() {
+
+    const isNonMobileScreen = useMediaQuery("(min-width: 1000px)")
     return (
         <AppBar
             sx={{
@@ -22,7 +25,7 @@ function Navbar() {
                 color="#3D1766"
             >
 
-            <SettingsIcon sx={{fontSize:"3rem", display: "inline"}}/>
+            {isNonMobileScreen && <SettingsIcon sx={{fontSize:"3rem", display: "inline"}}/>}
             <Typography
                 variant='h3'
                 sx={{
