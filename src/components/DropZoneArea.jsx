@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Box } from "@mui/system";
 import axios from "axios";
-import { CircularProgress, useMediaQuery } from "@mui/material";
+import { CircularProgress} from "@mui/material";
 import {Typography, Button } from "@mui/material";
 
 export default function DropZoneArea() {
