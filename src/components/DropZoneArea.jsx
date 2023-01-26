@@ -4,7 +4,6 @@ import { Box } from "@mui/system";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import {Typography, Button } from "@mui/material";
-// import Button from "@mui/material";
 
 export default function DropZoneArea() {
   const [paths, setPaths] = useState([]);
@@ -60,32 +59,73 @@ export default function DropZoneArea() {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <Box>
+    <Box
+      m="100px 0 0"
+    >
         {
             !image && <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p>Drop the files here ...</p>
+
+                <Box
+                  border="2px dashed #03001C"
+                  width="360px"
+                  height="100px"
+                  m="0 auto"
+                  display="flex"
+                  borderRadius="10px"
+                >
+                  <input {...getInputProps()} />
+
+                  <Typography variant="h6" sx={{
+                      m: "auto",
+                      "&:hover": {
+                        cursor: "pointer"
+                      }
+                    }}
+                  >Click or Drag & Drop files here </Typography>
+                
+
+                </Box>
           </div>
 
         }
 
       {paths.map(path => 
-        <img key={path} src={path} alt="img"/>
+        <Box
+          borderRadius="10px"
+          width="256px"
+          m="0 auto"
+        >
+
+          <img key={path} src={path} alt="img"/>
+        </Box>
       )}
 
-        {isLoading && <Box>
-                <CircularProgress color="secondary"/>
-                <Typography variant="h6" noWrap>
+        {isLoading && <Box
+        
+            backgroundColor="#FAD3E7"
+            width="256px"
+            className="label"
+            textAlign="center"
+            m="0 auto"
+          >
+                <CircularProgress color="secondary" sx={{p: "10px 0 0"}}/>
+                <Typography variant="h6" noWrap sx={{p: "0 0 10px"}}>
                   Processing
                 </Typography>
               </Box>}
         
         {data && <>
-            <Box>
-                <Typography variant="h6">
+            <Box
+              backgroundColor="#FAD3E7"
+              width="256px"
+              className="label"
+              textAlign="center"
+              m="0 auto"
+            >
+                <Typography variant="h6" sx={{p: "10px 0 0"}}>
                     label: {data.class}
                 </Typography>
-                <Typography variant="h6">
+                <Typography variant="h6" sx={{p: "0 0 10px"}}>
                     confidence: {confidence}%
                 </Typography>
 
@@ -94,14 +134,15 @@ export default function DropZoneArea() {
               backgroundColor="#FAD3E7"
               border="2px solid #EFA3C8"
               p="5px"
-              m="5px"
+              m="20px auto"
               width="80px"
               textAlign="center"
               borderRadius="5px"
               sx={{
                 "&:hover": {
                   backgroundColor: "#EFA3C8",
-                  borderColor: "#FAD3E7"
+                  borderColor: "#FAD3E7",
+                  cursor: "pointer"
                 }
               }}
             >
